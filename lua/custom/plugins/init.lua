@@ -18,7 +18,8 @@ return {
   dependencies = {
     -- Required.
     'nvim-lua/plenary.nvim',
-
+    -- Optional, used for completion setting
+    'hrsh7th/nvim-cmp',
     -- see below for full list of optional dependencies 👇
   },
   opts = {
@@ -29,5 +30,12 @@ return {
       },
     },
     -- see below for full list of options 👇
+    -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
+    completion = {
+      -- Set to false to disable completion.
+      nvim_cmp = true,
+      -- Trigger completion at 2 chars.
+      min_chars = 2,
+    },
   },
 }
