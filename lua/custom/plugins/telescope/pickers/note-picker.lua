@@ -105,7 +105,10 @@ end
 -- end
 --
 -- local template_dir = '/home/cscopetski/proj/task-manager/config/templates'
-local template_dir = get_template_dir(workspace_path)
-file_picker(require('telescope.themes').get_dropdown { cwd = template_dir }, template_dir)
+local new_note_with_prompt = function()
+  local template_dir = get_template_dir(workspace_path)
+  file_picker(require('telescope.themes').get_dropdown { cwd = template_dir }, template_dir)
+end
 -- to execute the function
 --colors(require('telescope.themes').get_dropdown {})
+return new_note_with_prompt

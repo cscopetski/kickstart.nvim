@@ -440,6 +440,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      -- Custom function keymaps
+      local note_tool = 
+      vim.keymap.set('n', '<leader>n', require 'custom.plugins.telescope.pickers.note-picker', { desc = 'Create a [N]ew note' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -588,7 +591,14 @@ require('lazy').setup({
               return client.supports_method(method, { bufnr = bufnr })
             end
           end
+          vim.lsp.handlers['textDocument/codeAction'] = function(err, result, ctx, config)
+            -- Your custom logic here
+            -- For example, you could filter results,
+            -- present them in a different UI, or automatically apply certain actions.
 
+            -- Fallback to the default handler if you don't want to completely replace it
+            vim.lsp.handlers.default_code_action(err, result, ctx, config)
+          end
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
