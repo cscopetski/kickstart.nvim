@@ -6,7 +6,7 @@ local action_state = require 'telescope.actions.state'
 
 local note_binary_path = '/home/cscopetski/proj/task-manager/target/release/task-manager'
 local config_file_name = '.note-maxxer.toml'
-local workspace_path = '/home/cscopetski/proj/task-manager/'
+local workspace_path = '/home/cscopetski/notes/'
 local config_path = workspace_path .. config_file_name
 
 local get_note_name = function()
