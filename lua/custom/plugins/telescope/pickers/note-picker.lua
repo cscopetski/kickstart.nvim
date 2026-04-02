@@ -10,6 +10,8 @@ local home = '/home/scoop/'
 local workspace_path = home .. 'notes/'
 local config_path = workspace_path .. config_file_name
 
+local daily_journal_template = 'journal.md'
+
 local get_note_name = function()
   local input = vim.fn.input 'Enter note title: '
   return input
@@ -57,7 +59,12 @@ local file_picker = function(opts, template_dir)
           actions.close(prompt_bufnr)
           local selection = action_state.get_selected_entry()
           local selected_template_file = selection[1]
-          local note_title = get_note_name()
+          local note_title
+          if selected_template_file == daily_journal_template then
+            note_title = os.date '%F'
+          else
+            note_title = get_note_name()
+          end
 
           if note_title ~= nil and note_title ~= '' then
             create_new_note(selected_template_file, note_title)
