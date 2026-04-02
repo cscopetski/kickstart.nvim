@@ -4,9 +4,10 @@ local conf = require('telescope.config').values
 local actions = require 'telescope.actions'
 local action_state = require 'telescope.actions.state'
 
-local note_binary_path = '/home/cscopetski/proj/task-manager/target/release/task-manager'
+local note_binary_path = 'task-manager'
 local config_file_name = '.note-maxxer.toml'
-local workspace_path = '/home/cscopetski/notes/'
+local home = '/home/scoop/'
+local workspace_path = home .. 'notes/'
 local config_path = workspace_path .. config_file_name
 
 local get_note_name = function()
